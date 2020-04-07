@@ -49,7 +49,7 @@ const Timekeeper = (props: any) => {
                 <Summary />
                 <TaskManager clicked={() => setShowModal(true)} />
             </Scale>
-            <button onClick={onSave}>Test save</button>
+            {/* <button onClick={onSave}>Test save</button> */}
         </div>
     )
 };

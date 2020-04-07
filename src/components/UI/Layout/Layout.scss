@@ -33,10 +33,4 @@
 .footer {
     grid-area: footer;
     @include white-n-black;
-
-        a {
-            text-decoration: none;
-            color: map-get($colors, "theme-black");
-            vertical-align: middle;
-        }
 }

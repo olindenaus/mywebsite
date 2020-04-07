@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Media from 'react-media';
-import { NavLink } from 'react-router-dom';
 
 import Burger from '../Toolbar/Burger/Burger';
 import NavigationLinks from '../Toolbar/ToolbarNavigation/ToolbarNavigation';
@@ -47,7 +46,7 @@ const Layout = (props: any) => {
                 {navigation}
             </div>
             <div className="content">{props.children}</div>
-            <div className="footer"><NavLink to="/login">Oskar Lindenau - {new Date().getFullYear()}</NavLink></div>
+            <div className="footer">Oskar Lindenau - {new Date().getFullYear()}</div>
         </div>
     )
 };

@@ -6,9 +6,6 @@ export {
     fetchLocations,
     fetchCountryInfo
 } from './locationLogs';
-export {    
-    saveLocationLog,
-} from './admin';
 export {
     addTask,
     updateTask,
@@ -18,9 +15,5 @@ export {
     saveUserTasks,
 } from './timetracker';
 export {
-    spotifyAuth,
-    saveSong,
-    searchSong,
     fetchSongs,
-    spotifyCheckState,
 } from './spotify';
