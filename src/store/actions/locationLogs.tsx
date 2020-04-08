@@ -1,4 +1,4 @@
-import { firebase } from '../../axios';
+import { personal } from '../../axios';
 import * as actionTypes from './actionTypes';
 
 export const fetchLocationsStart = () => {
@@ -24,7 +24,7 @@ export const fetchLocationsFail = (error: any) => {
 export const fetchLocations = () => {
     return (dispatch: any) => {
         dispatch(fetchLocationsStart());
-        firebase.get('locationLogs.json')
+        personal.get('locationLogs.json')
         .then(res => {
             dispatch(fetchLocationsSuccess(res.data));         
         })
@@ -57,7 +57,7 @@ const fetchCountrySuccess = (res: any) => {
 export const fetchCountryInfo = () => {
     return (dispatch: any) => {
         dispatch(fetchCountryStart());
-        firebase.get('locationLogs.json?orderBy="$key"&limitToLast=1')
+        personal.get('locationLogs.json?orderBy="$key"&limitToLast=1')
         .then(res => {
             dispatch(fetchCountrySuccess(res));
         })

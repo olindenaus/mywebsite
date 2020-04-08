@@ -1,4 +1,4 @@
-import { spotify_api, firebase } from '../../axios';
+import { personal } from '../../axios';
 import * as actionTypes from './actionTypes';
 
 export const fetchSongsStart = () => {
@@ -24,7 +24,7 @@ export const fetchSongsFail = (error: any) => {
 export const fetchSongs = () => {
     return (dispatch: any) => {
         dispatch(fetchSongsStart());
-        firebase.get('songs.json') //?orderBy="$key"
+        personal.get('songs.json') //?orderBy="$key"
             .then(res => {
                 dispatch(fetchSongsSuccess(res.data));
             })
