@@ -10,10 +10,11 @@
         color: white;
         border: none;
         border-radius: 5px;
+        padding: 6px 10px;
         cursor: pointer;
 
-        &:hover {            
-            box-shadow: 0 0 5px 5px #aaa;
+        &:hover {
+            background-color: #005500;
         }
     }
 

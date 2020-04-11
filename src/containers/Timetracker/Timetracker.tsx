@@ -37,9 +37,10 @@ const Timekeeper = (props: any) => {
 
     const onSave = () => {
         console.log("tasks: ", props.tasks);
-        console.log("token", props.authToken);        
-        props.onSaveTasks(props.tasks, props.authToken);
+        console.log("token", props.authToken);
+        props.onSaveTasks(props.tasks, props.authToken, props.uid);
     }
+    const saveButton = props.authToken !== null ? <button onClick={onSave}>Save tasks</button> : null;
     return (
         <div className="timetracker">
             <h1>Timetracker</h1>
@@ -49,7 +50,7 @@ const Timekeeper = (props: any) => {
                 <Summary />
                 <TaskManager clicked={() => setShowModal(true)} />
             </Scale>
-            {/* <button onClick={onSave}>Test save</button> */}
+            {/* {saveButton} */}
         </div>
     )
 };
@@ -58,6 +59,7 @@ const mapStateToProps = (state: any) => {
     return {
         tasks: state.timetracker.tasks,
         authToken: state.auth.token,
+        uid: state.auth.usedId
     }
 }
 
