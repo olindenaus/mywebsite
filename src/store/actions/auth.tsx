@@ -39,7 +39,7 @@ export const checkAuthTimeout = (expirationTime: number) => {
     }
 }
 
-export const auth = (email: string, password: string) => {
+export const auth = (email: string, password: string, isSignup: boolean) => {
     return (dispatch: any) => {
         dispatch(authStart());
         const authData = {
@@ -47,7 +47,11 @@ export const auth = (email: string, password: string) => {
             password: password,
             returnSecureToken: true
         }
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + process.env.REACT_APP_FIREBASE_KEY, authData)
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=';
+        if (!isSignup) {
+            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
+        }
+        axios.post(url + process.env.REACT_APP_FIREBASE_KEY, authData)
             .then(response => {
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('firebase_token', response.data.idToken);

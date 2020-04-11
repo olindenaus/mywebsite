@@ -5,11 +5,13 @@ import Spinner from '../components/UI/Spinner/Spinner';
 
 import './Auth.scss';
 import * as actions from '../store/actions/index';
+import Summary from '../containers/Timetracker/Summary/Summary';
 
 const Auth = (props: any) => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [isSignup, setIsSignup] = useState(false);
 
     const updateLogin = (e: any) => {
         setLogin(e.target.value);
@@ -21,7 +23,7 @@ const Auth = (props: any) => {
 
     const submitHandler = (event: any) => {
         event.preventDefault();
-        props.onAuth(login, password);
+        props.onAuth(login, password, isSignup);
     }
 
     let authRedirect = null;
@@ -37,6 +39,13 @@ const Auth = (props: any) => {
         );
     };
 
+    let submitText = 'Log In';
+    let switchText = 'Sign Up';
+    if (isSignup) {
+        submitText = 'Sign Up';
+        switchText = 'Log In';
+    }
+
     let form = (
         <>
             <div className="input-wrapper">
@@ -49,8 +58,9 @@ const Auth = (props: any) => {
             <input type="password" value={password} onChange={updatePassword} />
                 <span className="underline"></span>
             </div>
-                {errorMessage}
-            <button className="submit-button">Log In</button>
+            {errorMessage}
+            <div className="switch" onClick={() => setIsSignup(!isSignup)}>Switch to {switchText}</div>
+            <button className="submit-button">{submitText}</button>
         </>
     );
 
@@ -78,7 +88,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        onAuth: (email: string, password: string) => dispatch(actions.auth(email, password))
+        onAuth: (email: string, password: string, isSignup: boolean) => dispatch(actions.auth(email, password, isSignup))
     }
 }
 

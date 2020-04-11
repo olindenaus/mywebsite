@@ -10,6 +10,11 @@ form {
     height: 320px;
     box-shadow: 0px 0px 16px 12px map-get($colors, "theme-bright");
 
+    .switch {
+        margin-bottom: 5px;
+        cursor:pointer;
+    }
+
     .input-wrapper {        
         @include justify-align-center;
         margin-bottom: 2em;
